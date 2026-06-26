@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hidayat Noor Fadilah Premium Services | YouTube Premium Murah</title>
+    
+    <!-- Google Fonts & Tailwind CSS CDN -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        zettDark: '#08090C',
+                        zettCard: 'rgba(17, 20, 28, 0.75)',
+                        zettNeon: '#39FF14',
+                        zettNeonDim: 'rgba(57, 255, 20, 0.25)',
+                        zettGray: '#94A3B8'
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Zettbos Glassmorphism Premium CSS UI/UX Base */
+        body {
+            background-color: #08090C;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(57, 255, 20, 0.04) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(57, 255, 20, 0.04) 0%, transparent 40%);
+            color: #F8FAFC;
+            overflow-x: hidden;
+        }
+
+        .glass-card {
+            background: rgba(17, 20, 28, 0.65);
+            backdrop-filter: blur(16px) saturate(180%);
+            -webkit-backdrop-filter: blur(16px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .glass-card:hover {
+            border-color: rgba(57, 255, 20, 0.4);
+            box-shadow: 0 10px 30px -10px rgba(57, 255, 20, 0.15);
+            transform: translateY(-4px);
+        }
+
+        .neon-glow-btn {
+            position: relative;
+            background: #08090C;
+            border: 2px solid #39FF14;
+            color: #39FF14;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 10px rgba(57, 255, 20, 0.2);
+        }
+
+        .neon-glow-btn:hover {
+            background: #39FF14;
+            color: #08090C;
+            box-shadow: 0 0 25px rgba(57, 255, 20, 0.8);
+            transform: scale(1.02);
+        }
+
+        .neon-border-focus:focus {
+            outline: none;
+            border-color: #39FF14;
+            box-shadow: 0 0 12px rgba(57, 255, 20, 0.3);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #08090C;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(57, 255, 20, 0.3);
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #39FF14;
+        }
+
+        /* Ambient Blob Layering */
+        .ambient-glow {
+            position: absolute;
+            width: 350px;
+            height: 350px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(57, 255, 20, 0.12) 0%, rgba(0,0,0,0) 70%);
+            z-index: -10;
+            filter: blur(40px);
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body class="font-sans antialiased min-h-screen relative pb-12">
+
+    <!-- Ambient Blurs -->
+    <div class="ambient-glow top-[15%] left-[5%]"></div>
+    <div class="ambient-glow top-[50%] right-[5%]"></div>
+
+    <!-- Navigation Header -->
+    <header class="sticky top-0 z-50 w-full bg-zettDark/80 backdrop-blur-md border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-500 to-zettNeon flex items-center justify-center shadow-lg shadow-zettNeonDim">
+                    <i class="fa-solid fa-bolt text-zettDark text-xl font-black animate-pulse"></i>
+                </div>
+                <span class="text-lg font-bold tracking-tight bg-gradient-to-r from-white via-slate-100 to-zettNeon bg-clip-text text-transparent uppercase">
+                    Hidayat Noor Fadilah
+                </span>
+            </div>
+            <nav class="hidden md:flex items-center gap-8">
+                <a href="#hero" class="text-sm font-medium text-slate-300 hover:text-zettNeon transition">Beranda</a>
+                <a href="#services" class="text-sm font-medium text-slate-300 hover:text-zettNeon transition">Layanan</a>
+                <a href="#order" class="text-sm font-medium text-slate-300 hover:text-zettNeon transition">Pesan Sekarang</a>
+                <button onclick="toggleAdminPanel()" class="text-sm font-medium text-slate-300 hover:text-zettNeon transition">
+                    <i class="fa-solid fa-lock-open mr-1"></i> Admin Panel
+                </button>
+            </nav>
+            <div class="flex items-center gap-3">
+                <a href="#order" class="hidden sm:inline-flex px-4 py-2 text-xs font-bold uppercase tracking-wider rounded-lg neon-glow-btn">
+                    Pesan Paket <i class="fa-solid fa-rocket ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Wrapped Relative -->
+    <main class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 sm:mt-20">
+        
+        <!-- SECTION 1: HERO SECTION -->
+        <section id="hero" class="text-center py-8 sm:py-16 flex flex-col items-center justify-center">
+            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 mb-6 animate-bounce">
+                <span class="w-2 h-2 rounded-full bg-zettNeon"></span>
+                <span class="text-xs font-medium text-slate-300">⚡ Akses Instan & Bergaransi Premium</span>
+            </div>
+            
+            <h1 class="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight leading-tight max-w-4xl">
+                Nikmati Hiburan <span class="bg-gradient-to-r from-emerald-400 to-zettNeon bg-clip-text text-transparent">Tanpa Batas</span> Bersama Kami!
+            </h1>
+            
+            <p class="mt-6 text-base sm:text-xl text-zettGray max-w-2xl leading-relaxed">
+                Layanan berlangganan YouTube Premium bergaransi resmi, proses cepat tanpa kendala, bebas iklan selamanya dari profil terpercaya Hidayat Noor Fadilah.
+            </p>
+            
+            <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center items-center w-full max-w-md">
+                <a href="#order" class="w-full sm:w-auto px-8 py-4 rounded-xl text-center font-bold text-zettDark bg-zettNeon shadow-[0_0_20px_rgba(57,255,20,0.4)] hover:shadow-[0_0_35px_rgba(57,255,20,0.6)] transition-all hover:scale-105">
+                    Order Instan <i class="fa-solid fa-shopping-cart ml-2"></i>
+                </a>
+                <a href="#services" class="w-full sm:w-auto px-8 py-4 rounded-xl text-center font-bold text-white border border-white/20 hover:bg-white/5 transition-all">
+                    Lihat Paket
+                </a>
+            </div>
+
+            <!-- Trust Stats Badge -->
+            <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4 w-full max-w-3xl">
+                <div class="glass-card p-4 rounded-2xl">
+                    <h3 class="text-2xl font-bold text-zettNeon">Fast</h3>
+                    <p class="text-xs text-zettGray mt-1">Proses Sangat Cepat</p>
+                </div>
+                <div class="glass-card p-4 rounded-2xl">
+                    <h3 class="text-2xl font-bold text-zettNeon">100%</h3>
+                    <p class="text-xs text-zettGray mt-1">Resmi & Legal</p>
+                </div>
+                <div class="glass-card p-4 rounded-2xl">
+                    <h3 class="text-2xl font-bold text-zettNeon">Full</h3>
+                    <p class="text-xs text-zettGray mt-1">Garansi Penuh</p>
+                </div>
+                <div class="glass-card p-4 rounded-2xl">
+                    <h3 class="text-2xl font-bold text-zettNeon">Cheap</h3>
+                    <p class="text-xs text-zettGray mt-1">Harga Bersahabat</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: KATALOG LAYANAN -->
+        <section id="services" class="py-16 sm:py-24 border-t border-white/5">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">Katalog Layanan Premium</h2>
+                <p class="mt-4 text-zettGray">Pilih durasi paket YouTube Premium yang paling sesuai dengan kebutuhan hiburan Anda.</p>
+            </div>
+
+            <div id="catalog-container" class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <div class="text-center col-span-2 text-zettGray animate-pulse">Loading Katalog Paket...</div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: FORM ORDER DIRECT TO SHEET -->
+        <section id="order" class="py-16 sm:py-24 border-t border-white/5">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+                
+                <!-- Kiri: Info Form -->
+                <div class="lg:col-span-5 space-y-6">
+                    <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">Formulir Order Instan</h2>
+                    <p class="text-zettGray leading-relaxed">
+                        Masukkan identitas Anda, pilih paket durasi yang Anda inginkan, kalkulasi total harga akan otomatis terhitung, dan pesanan akan langsung tercatat secara rapi di database spreadsheet kami.
+                    </p>
+
+                    <div class="space-y-4">
+                        <div class="flex items-start gap-4 p-4 rounded-xl bg-white/5 border border-white/10">
+                            <span class="flex-shrink-0 w-8 h-8 rounded-lg bg-zettNeonDim text-zettNeon flex items-center justify-center font-bold">1</span>
+                            <div>
+                                <h4 class="font-bold text-slate-100">Pilih Paket Durasi</h4>
+                                <p class="text-sm text-zettGray">Tentukan paket YouTube Premium 1 Bulan atau 2 Bulan.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4 p-4 rounded-xl bg-white/5 border border-white/10">
+                            <span class="flex-shrink-0 w-8 h-8 rounded-lg bg-zettNeonDim text-zettNeon flex items-center justify-center font-bold">2</span>
+                            <div>
+                                <h4 class="font-bold text-slate-100">Isi Kontak & Jumlah</h4>
+                                <p class="text-sm text-zettGray">Masukkan data WhatsApp Anda dengan benar untuk konfirmasi pembayaran cepat.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Kanan: Form Order -->
+                <div class="lg:col-span-7">
+                    <div class="glass-card p-6 sm:p-10 rounded-3xl relative overflow-hidden">
+                        
+                        <div id="order-alert" class="hidden mb-6 p-4 rounded-xl text-sm font-semibold transition-all"></div>
+
+                        <form id="smm-order-form" onsubmit="event.preventDefault(); handleOrderSubmit();" class="space-y-6">
+                            
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">Nama Lengkap</label>
+                                    <input type="text" id="cust-name" required placeholder="Contoh: Budi Santoso"
+                                           class="w-full bg-[#11141C] border border-white/10 rounded-xl px-4 py-3 text-white text-sm neon-border-focus transition-all">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">WhatsApp Aktif</label>
+                                    <input type="tel" id="cust-whatsapp" required placeholder="Contoh: 08123456789"
+                                           class="w-full bg-[#11141C] border border-white/10 rounded-xl px-4 py-3 text-white text-sm neon-border-focus transition-all">
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">Pilih Paket</label>
+                                <select id="cust-service" required onchange="updatePriceCalculation()"
+                                        class="w-full bg-[#11141C] border border-white/10 rounded-xl px-4 py-3 text-white text-sm neon-border-focus transition-all">
+                                    <option value="" disabled selected>Pilih salah satu layanan...</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">Jumlah Paket (Kuantitas)</label>
+                                <input type="number" id="cust-qty" required min="1" value="1" placeholder="Contoh: 1" oninput="updatePriceCalculation()"
+                                       class="w-full bg-[#11141C] border border-white/10 rounded-xl px-4 py-3 text-white text-sm neon-border-focus transition-all">
+                            </div>
+
+                            <div class="p-4 rounded-2xl bg-white/5 border border-white/5 space-y-2">
+                                <div class="flex justify-between text-xs text-zettGray">
+                                    <span>Skema Harga Paket:</span>
+                                    <span id="rate-display">-</span>
+                                </div>
+                                <div class="h-px bg-white/5 my-2"></div>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-sm font-bold text-white">Estimasi Total Harga:</span>
+                                    <span id="total-price" class="text-xl font-extrabold text-zettNeon">Rp 0</span>
+                                </div>
+                            </div>
+
+                            <button type="submit" id="btn-submit"
+                                    class="w-full py-4 rounded-2xl font-bold text-zettDark bg-zettNeon hover:bg-emerald-400 transition-all shadow-[0_0_15px_rgba(57,255,20,0.3)] hover:scale-[1.01] flex items-center justify-center gap-2">
+                                <span>Kirim Pesanan Premium</span> <i class="fa-solid fa-paper-plane"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECTION 4: WEB ADMIN DASHBOARD (DILINDUNGI PASSWORD RAHASIA) -->
+        <section id="admin-panel-section" class="hidden py-16 sm:py-24 border-t border-white/5">
+            <div class="text-center max-w-3xl mx-auto mb-10">
+                <h2 class="text-3xl font-extrabold tracking-tight text-white flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-circle-user text-zettNeon"></i> HNF Admin Panel
+                </h2>
+                <p class="mt-2 text-zettGray">Manajemen pesanan masuk dan otomatisasi ubah status langsung ke Google Sheet.</p>
+            </div>
+
+            <div class="glass-card p-6 sm:p-10 rounded-3xl max-w-6xl mx-auto space-y-6">
+                <!-- Autentikasi Admin -->
+                <div id="admin-auth" class="flex flex-col sm:flex-row items-center justify-center gap-4 py-8">
+                    <div class="w-full max-w-xs">
+                        <label class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2 text-center sm:text-left">Masukkan Kode Akses Admin</label>
+                        <input type="password" id="admin-key" placeholder="Passkey Default: 1234"
+                               class="w-full bg-[#11141C] border border-white/10 rounded-xl px-4 py-3 text-white text-center sm:text-left text-sm neon-border-focus transition-all">
+                    </div>
+                    <button onclick="loadAdminOrders()" class="w-full sm:w-auto px-8 py-3.5 mt-6 sm:mt-0 rounded-xl font-bold text-zettDark bg-zettNeon hover:scale-105 transition-all">
+                        Login & Sinkron Data
+                    </button>
+                </div>
+
+                <!-- Tampilan Utama Manajemen Data Order -->
+                <div id="admin-dashboard-view" class="hidden space-y-6">
+                    <div class="flex flex-wrap items-center justify-between gap-4">
+                        <div class="text-xs font-mono text-zettGray">
+                            Status Koneksi: <span class="text-zettNeon">● Terhubung Real-Time</span>
+                        </div>
+                        <button onclick="loadAdminOrders()" class="px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-xs font-semibold text-slate-300 hover:text-zettNeon transition">
+                            <i class="fa-solid fa-arrows-rotate mr-1"></i> Refresh Data
+                        </button>
+                    </div>
+
+                    <!-- Loader Data -->
+                    <div id="admin-loader" class="hidden flex justify-center py-12">
+                        <div class="animate-spin rounded-full h-10 w-10 border-b-2 border-zettNeon"></div>
+                    </div>
+
+                    <!-- Tabel Pesanan (Responsive Card-based layout) -->
+                    <div id="admin-orders-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <!-- Data pesanan diisi via JS -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="mt-20 border-t border-white/5 py-8 text-center text-xs text-zettGray relative z-10">
+        <p>&copy; 2026 Hidayat Noor Fadilah Premium Services. All rights reserved.</p>
+        <p class="mt-2 flex justify-center items-center gap-1.5 text-zettNeon">
+            <span>Powered by</span> 
+            <i class="fa-solid fa-bolt"></i> 
+            <span class="font-bold tracking-wider">HNF Engine 2.1</span>
+        </p>
+    </footer>
+
+    <!-- LOGIKA JAVASCRIPT & SINKRONISASI BACKEND -->
+    <script>
+        // Data Katalog Fallback
+        const DUMMY_KATALOG = [
+            { id: "srv-001", nama: "YouTube Premium 1 Bulan", kategori: "YouTube", harga: 15000, minOrder: 1 },
+            { id: "srv-002", nama: "YouTube Premium 2 Bulan", kategori: "YouTube", harga: 23000, minOrder: 1 }
+        ];
+
+        // Silakan ganti nomor di bawah dengan nomor WhatsApp Anda (Gunakan format kode negara, contoh 628123456789 tanpa simbol +)
+        const ADMIN_WHATSAPP_TARGET = "6281254129421";
+
+        let katalogLokal = [...DUMMY_KATALOG];
+
+        window.addEventListener('DOMContentLoaded', () => {
+            initApp();
+        });
+
+        function initApp() {
+            if (typeof google !== 'undefined' && typeof google.script !== 'undefined') {
+                google.script.run
+                    .withSuccessHandler((serverKatalog) => {
+                        katalogLokal = serverKatalog;
+                        renderUI();
+                    })
+                    .withFailureHandler((err) => {
+                        console.error("Gagal memuat katalog server, gunakan dummy fallback:", err);
+                        renderUI();
+                    })
+                    .getKatalogLayanan();
+            } else {
+                renderUI();
+            }
+        }
+
+        function renderUI() {
+            const catalogContainer = document.getElementById('catalog-container');
+            const selectElement = document.getElementById('cust-service');
+            
+            catalogContainer.innerHTML = '';
+            selectElement.innerHTML = '<option value="" disabled selected>Pilih salah satu layanan...</option>';
+
+            katalogLokal.forEach(layanan => {
+                const card = document.createElement('div');
+                card.className = 'glass-card p-6 rounded-2xl flex flex-col justify-between';
+                
+                card.innerHTML = `
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="px-2.5 py-1 rounded bg-white/5 border border-white/10 text-xs font-mono text-zettGray">${layanan.kategori}</span>
+                            <span class="text-2xl"><i class="fa-brands fa-youtube text-red-500 animate-pulse"></i></span>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-100">${layanan.nama}</h3>
+                        <p class="text-xs text-zettGray mt-2">Dapatkan akses premium legal & bergaransi penuh dari Hidayat Noor Fadilah tanpa proses yang rumit.</p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-white/5">
+                        <div class="flex justify-between items-baseline mb-4">
+                            <span class="text-xs text-zettGray">Harga Paket:</span>
+                            <span class="text-lg font-bold text-zettNeon">Rp ${formatRupiah(layanan.harga)}</span>
+                        </div>
+                        <a href="#order" onclick="preselectService('${layanan.id}')" 
+                           class="block w-full py-2.5 rounded-lg text-center text-xs font-bold text-slate-100 bg-white/5 border border-white/10 hover:border-zettNeon hover:text-zettNeon transition duration-300">
+                            Pilih Paket <i class="fa-solid fa-arrow-right ml-1"></i>
+                        </a>
+                    </div>
+                `;
+                catalogContainer.appendChild(card);
+
+                const option = document.createElement('option');
+                option.value = layanan.id;
+                option.textContent = `${layanan.nama} (Rp ${formatRupiah(layanan.harga)})`;
+                selectElement.appendChild(option);
+            });
+        }
+
+        function updatePriceCalculation() {
+            const serviceId = document.getElementById('cust-service').value;
+            const qty = parseInt(document.getElementById('cust-qty').value, 10);
+            
+            const rateDisplay = document.getElementById('rate-display');
+            const totalDisplay = document.getElementById('total-price');
+
+            if (!serviceId) return;
+
+            const selected = katalogLokal.find(s => s.id === serviceId);
+            if (selected) {
+                rateDisplay.textContent = `Rp ${formatRupiah(selected.harga)} / Paket`;
+                document.getElementById('cust-qty').min = selected.minOrder;
+
+                if (!isNaN(qty) && qty >= selected.minOrder) {
+                    const estimatedPrice = qty * selected.harga;
+                    totalDisplay.textContent = `Rp ${formatRupiah(estimatedPrice)}`;
+                } else {
+                    totalDisplay.textContent = `Rp 0`;
+                }
+            }
+        }
+
+        function preselectService(serviceId) {
+            document.getElementById('cust-service').value = serviceId;
+            updatePriceCalculation();
+        }
+
+        function handleOrderSubmit() {
+            const btnSubmit = document.getElementById('btn-submit');
+            
+            const orderPayload = {
+                nama: String(document.getElementById('cust-name').value).trim(),
+                whatsapp: String(document.getElementById('cust-whatsapp').value).trim(),
+                layananId: String(document.getElementById('cust-service').value).trim(),
+                jumlah: parseInt(document.getElementById('cust-qty').value, 10)
+            };
+
+            if (!orderPayload.nama || !orderPayload.whatsapp || !orderPayload.layananId || isNaN(orderPayload.jumlah)) {
+                showAlert('Mohon isi seluruh data formulir dengan lengkap.', 'error');
+                return;
+            }
+
+            btnSubmit.disabled = true;
+            btnSubmit.innerHTML = `<span>Sedang Memproses...</span> <div class="animate-spin rounded-full h-4 w-4 border-b-2 border-zettDark inline-block"></div>`;
+
+            if (typeof google !== 'undefined' && typeof google.script !== 'undefined') {
+                try {
+                    google.script.run
+                        .withSuccessHandler((response) => {
+                            btnSubmit.disabled = false;
+                            btnSubmit.innerHTML = `<span>Kirim Pesanan Premium</span> <i class="fa-solid fa-paper-plane"></i>`;
+                            
+                            if (response.success) {
+                                showAlert(`<strong>Sukses!</strong> ${response.message}<br><span class="text-xs">ID Pesanan: <strong>${response.trxId}</strong> - Total Bayar: Rp ${formatRupiah(response.totalHarga)}</span>`, 'success');
+                                
+                                // Buka WhatsApp Admin dengan format data pesanan
+                                kirimKeWhatsApp(response.trxId, orderPayload, response.layanan, response.totalHarga);
+                                
+                                document.getElementById('smm-order-form').reset();
+                                document.getElementById('total-price').textContent = "Rp 0";
+                            } else {
+                                showAlert(`Pemesanan Gagal: ${response.message}`, 'error');
+                            }
+                        })
+                        .withFailureHandler((err) => {
+                            btnSubmit.disabled = false;
+                            btnSubmit.innerHTML = `<span>Kirim Pesanan Premium</span> <i class="fa-solid fa-paper-plane"></i>`;
+                            showAlert(`Koneksi Gagal: ${err.message}`, 'error');
+                        })
+                        .submitOrder(orderPayload);
+                } catch (err) {
+                    btnSubmit.disabled = false;
+                    btnSubmit.innerHTML = `<span>Kirim Pesanan Premium</span> <i class="fa-solid fa-paper-plane"></i>`;
+                    showAlert(`Crash Handler: ${err.toString()}`, 'error');
+                }
+            } else {
+                setTimeout(() => {
+                    btnSubmit.disabled = false;
+                    btnSubmit.innerHTML = `<span>Kirim Pesanan Premium</span> <i class="fa-solid fa-paper-plane"></i>`;
+                    
+                    const simulatedId = `TRX-${new Date().toISOString().slice(0,10).replace(/-/g,"")}-0001`;
+                    const selected = katalogLokal.find(s => s.id === orderPayload.layananId);
+                    const simulatedTotal = orderPayload.jumlah * selected.harga;
+
+                    showAlert(`<strong>[MOCK SUCCESS]</strong> Pesanan Berhasil disimulasikan!<br>ID Pesanan: <strong>${simulatedId}</strong><br>Total Biaya: <strong>Rp ${formatRupiah(simulatedTotal)}</strong>`, 'success');
+                    
+                    // Buka WhatsApp Admin Simulasi
+                    kirimKeWhatsApp(simulatedId, orderPayload, selected.nama, simulatedTotal);
+                    
+                    document.getElementById('smm-order-form').reset();
+                    document.getElementById('total-price').textContent = "Rp 0";
+                }, 1200);
+            }
+        }
+
+        function kirimKeWhatsApp(trxId, payload, namaLayanan, totalHarga) {
+            const textTemplate = `Halo Admin Hidayat Noor Fadilah!\n` +
+                                 `Saya ingin mengonfirmasi pembayaran pesanan Premium.\n\n` +
+                                 `*DETAIL PESANAN:*\n` +
+                                 `• *ID Transaksi:* ${trxId}\n` +
+                                 `• *Nama Customer:* ${payload.nama}\n` +
+                                 `• *No. WhatsApp:* ${payload.whatsapp}\n` +
+                                 `• *Paket:* ${namaLayanan}\n` +
+                                 `• *Jumlah Paket:* ${payload.jumlah} Pcs\n` +
+                                 `• *Total Tagihan:* Rp ${formatRupiah(totalHarga)}\n\n` +
+                                 `Mohon segera diproses dan diaktifkan ya Admin. Terima kasih!`;
+                                 
+            const encodedText = encodeURIComponent(textTemplate);
+            const waLink = `https://api.whatsapp.com/send?phone=${ADMIN_WHATSAPP_TARGET}&text=${encodedText}`;
+            
+            // Mengalihkan secara otomatis ke WhatsApp di tab baru
+            window.open(waLink, '_blank');
+        }
+
+        function toggleAdminPanel() {
+            const adminSection = document.getElementById('admin-panel-section');
+            adminSection.classList.toggle('hidden');
+            if(!adminSection.classList.contains('hidden')) {
+                adminSection.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        function loadAdminOrders() {
+            const passkey = document.getElementById('admin-key').value;
+            const loader = document.getElementById('admin-loader');
+            const ordersList = document.getElementById('admin-orders-list');
+            const dashboardView = document.getElementById('admin-dashboard-view');
+            const authView = document.getElementById('admin-auth');
+
+            if (!passkey) {
+                alert("Kode akses admin tidak boleh kosong!");
+                return;
+            }
+
+            loader.classList.remove('hidden');
+            ordersList.innerHTML = '';
+
+            if (typeof google !== 'undefined' && typeof google.script !== 'undefined') {
+                google.script.run
+                    .withSuccessHandler((response) => {
+                        loader.classList.add('hidden');
+                        if (response.success) {
+                            authView.classList.add('hidden');
+                            dashboardView.classList.remove('hidden');
+                            renderAdminOrders(response.data);
+                        } else {
+                            alert("Login Gagal: " + response.message);
+                        }
+                    })
+                    .withFailureHandler((err) => {
+                        loader.classList.add('hidden');
+                        alert("Koneksi gagal: " + err.message);
+                    })
+                    .getOrdersForAdmin(passkey);
+            } else {
+                // Mock Admin Data Simulator (Aman di Canvas)
+                setTimeout(() => {
+                    loader.classList.add('hidden');
+                    authView.classList.add('hidden');
+                    dashboardView.classList.remove('hidden');
+                    const mockOrders = [
+                        { trxId: "TRX-20260626-0001", tanggal: "26/06/2026 12:00:00", nama: "Budiono Siregar", whatsapp: "08123456789", layanan: "YouTube Premium 1 Bulan", jumlah: "1", totalHarga: "15000", status: "Pending Payment" },
+                        { trxId: "TRX-20260626-0002", tanggal: "26/06/2026 13:10:00", nama: "Siti Rahma", whatsapp: "08987654321", layanan: "YouTube Premium 2 Bulan", jumlah: "2", totalHarga: "46000", status: "Selesai" }
+                    ];
+                    renderAdminOrders(mockOrders);
+                }, 1000);
+            }
+        }
+
+        function renderAdminOrders(orders) {
+            const ordersList = document.getElementById('admin-orders-list');
+            ordersList.innerHTML = '';
+
+            if (orders.length === 0) {
+                ordersList.innerHTML = `<div class="col-span-3 text-center text-zettGray py-8">Belum ada pesanan terdaftar.</div>`;
+                return;
+            }
+
+            orders.forEach(order => {
+                const orderCard = document.createElement('div');
+                
+                let badgeColor = "bg-yellow-500/10 text-yellow-400 border border-yellow-500/20";
+                if (order.status === "Selesai") badgeColor = "bg-green-500/10 text-green-400 border border-green-500/20";
+                if (order.status === "Batal") badgeColor = "bg-red-500/10 text-red-400 border border-red-500/20";
+
+                orderCard.className = 'glass-card p-5 rounded-2xl flex flex-col justify-between border border-white/5 space-y-4';
+                orderCard.innerHTML = `
+                    <div class="space-y-2">
+                        <div class="flex justify-between items-center">
+                            <span class="text-xs font-mono text-zettGray">${order.tanggal}</span>
+                            <span class="px-2 py-0.5 rounded text-[10px] font-bold ${badgeColor}">${order.status}</span>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-white text-base">${order.nama}</h4>
+                            <p class="text-xs text-emerald-400 font-medium">${order.layanan} (${order.jumlah} Paket)</p>
+                        </div>
+                        <div class="pt-2 flex justify-between items-center text-xs border-t border-white/5">
+                            <span class="text-zettGray">ID: <strong class="text-slate-300">${order.trxId}</strong></span>
+                            <span class="font-extrabold text-zettNeon">Rp ${formatRupiah(order.totalHarga)}</span>
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-2 gap-2 pt-2">
+                        <!-- Kirim Pesan WA -->
+                        <a href="https://wa.me/${formatWaNumber(order.whatsapp)}" target="_blank"
+                           class="py-2 px-3 rounded-lg text-center text-xs font-bold text-slate-100 bg-white/5 border border-white/10 hover:bg-emerald-500/10 hover:text-emerald-400 transition flex items-center justify-center gap-1">
+                            <i class="fa-brands fa-whatsapp text-sm"></i> Chat
+                        </a>
+                        
+                        <!-- Satu Klik Selesai otomatis -->
+                        <button onclick="setOrderSelesai('${order.trxId}')" ${order.status === 'Selesai' ? 'disabled' : ''}
+                                class="py-2 px-3 rounded-lg text-center text-xs font-bold text-zettDark bg-zettNeon hover:bg-emerald-400 transition disabled:opacity-30 disabled:pointer-events-none flex items-center justify-center gap-1 shadow-md shadow-zettNeonDim">
+                            <i class="fa-solid fa-circle-check"></i> Selesai
+                        </button>
+                    </div>
+                `;
+                ordersList.appendChild(orderCard);
+            });
+        }
+
+        function setOrderSelesai(trxId) {
+            const passkey = document.getElementById('admin-key').value;
+            if (!confirm(`Ubah status transaksi ${trxId} menjadi "Selesai" secara otomatis?`)) return;
+
+            if (typeof google !== 'undefined' && typeof google.script !== 'undefined') {
+                google.script.run
+                    .withSuccessHandler((response) => {
+                        if (response.success) {
+                            alert(response.message);
+                            loadAdminOrders(); // Muat ulang data terbaru
+                        } else {
+                            alert("Gagal memperbarui status: " + response.message);
+                        }
+                    })
+                    .withFailureHandler((err) => {
+                        alert("Gagal koneksi server: " + err.message);
+                    })
+                    .updateOrderStatus(passkey, trxId, "Selesai");
+            } else {
+                alert(`[MOCK SUCCESS] Status pesanan ${trxId} diubah menjadi Selesai!`);
+                loadAdminOrders();
+            }
+        }
+
+        function showAlert(msg, type) {
+            const alertBox = document.getElementById('order-alert');
+            alertBox.classList.remove('hidden', 'bg-red-500/10', 'text-red-400', 'border', 'border-red-500/20', 'bg-green-500/10', 'text-green-400', 'border-green-500/20');
+            
+            if (type === 'success') {
+                alertBox.classList.add('bg-green-500/10', 'text-green-400', 'border', 'border-green-500/20');
+            } else {
+                alertBox.classList.add('bg-red-500/10', 'text-red-400', 'border', 'border-red-500/20');
+            }
+            alertBox.innerHTML = msg;
+            alertBox.classList.remove('hidden');
+            alertBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+
+        function formatRupiah(angka) {
+            return String(angka).replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+        }
+
+        function formatWaNumber(wa) {
+            let clean = wa.replace(/[^0-9]/g, '');
+            if (clean.startsWith('0')) {
+                clean = '62' + clean.slice(1);
+            }
+            return clean;
+        }
+    </script>
+</body>
+</html>
